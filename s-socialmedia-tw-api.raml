@@ -1,0 +1,47 @@
+#%RAML 1.0
+title: s-socialMedia-tw-api
+description: System API for Twitter
+mediaType:
+  - application/json
+version: v1
+protocols:
+  - HTTP
+
+types:
+  SocialMediaPost:
+    type: object
+    properties:
+        postCode: string
+        title: string
+        message: string
+        toSocialMedia:
+          type: string
+          enum: [TW]
+      
+
+
+/SocialMediaPost:
+  post:
+    displayName: Twitter Post
+    description: Creates a Twitter Post
+    body:
+      type: SocialMediaPost
+    responses:
+      201:
+        body: 
+          application/json:
+            example:
+              message: Tweet Posted successfully!
+              id : ID-FROM-TWEET-API
+              postCode: 0000001
+      500:
+        body:
+          type: string
+          example: "Internal server error"
+      400:
+        body:
+          type: string
+          example: "Bad Request"
+
+
+      
