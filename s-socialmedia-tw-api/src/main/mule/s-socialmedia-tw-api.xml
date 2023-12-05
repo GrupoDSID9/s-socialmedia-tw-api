@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd ">
-   <flow name="s-socialmedia-tw-api-main" doc:id="439b8384-d91b-4e22-8b11-b04222168c57">
+    <flow name="s-socialmedia-tw-api-main" doc:id="439b8384-d91b-4e22-8b11-b04222168c57">
         <http:listener config-ref="s-socialmedia-tw-api-httpListenerConfig" path="/api/*">
             <http:response statusCode="#[vars.httpStatus default 200]">
                 <http:headers>#[vars.outboundHeaders default {}]</http:headers>
@@ -120,6 +120,6 @@ output application/json
         </error-handler>
     </flow>
     <flow name="post:\SocialMediaPost:application\json:s-socialmedia-tw-api-config" doc:id="767e8fce-3c98-4298-be69-a4571d445ddb">
-        <flow-ref doc:name="s-socialmedia-tw-api-config_subFlow" doc:id="8009f671-7f7c-42bb-a5c0-f9198b81ed8e" name="post:\SocialMediaPost:application\json:s-socialmedia-tw-api-config_subFlow"/>
+        <flow-ref doc:name="s-socialmedia-tw-api-config_subFlow" doc:id="8009f671-7f7c-42bb-a5c0-f9198b81ed8e" name="post:\SocialMediaPost:application\json:s-socialmedia-tw-api-config_subFlow" />
     </flow>
 </mule>
