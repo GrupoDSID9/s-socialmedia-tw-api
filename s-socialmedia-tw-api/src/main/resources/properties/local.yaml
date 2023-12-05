@@ -1,0 +1,10 @@
+api:
+  name: "s-socialMedia-tw-api"
+  port: "8085"
+  
+twitter:
+  api_key: "U0L6SzWgd0Ju6kEXHVRTZN1kQ"
+  api_key_secret: "VhKsKXdG3vSrShuARrHFpgSqOckCFblKi7UQJhwlU7grFVn161"
+  access_token: "1730995269964070912-UC8UXdHbSVNWyWuBPzkJxatocy8TaD"
+  access_token_secret: "tx1RkDwMTy7tT3wvOc4QU7EZR28yeYKvx9MuryiF7FGYA"
+  

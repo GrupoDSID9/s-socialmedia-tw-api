@@ -1,0 +1,10 @@
+%dw 2.0
+
+type auto_63db4aa3_0192_48cb_9c09_bfbffe8bd954_Input_Payload = {
+  toSocialMedia: String, 
+  postCode: String, 
+  title: String, 
+  message: String, 
+  _?: Any
+}
+

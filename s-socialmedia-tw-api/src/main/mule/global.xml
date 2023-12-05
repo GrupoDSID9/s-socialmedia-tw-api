@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:oauth="http://www.mulesoft.org/schema/mule/oauth"
+	xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd 
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/oauth http://www.mulesoft.org/schema/mule/oauth/current/mule-oauth.xsd">
+	 <http:listener-config name="s-socialmedia-tw-api-httpListenerConfig">
+        <http:listener-connection host="0.0.0.0" port="${api.port}" />
+    </http:listener-config>
+    <apikit:config name="s-socialmedia-tw-api-config" api="resource::6bfdfbd6-1d2e-4ffc-96e4-3a6ab65c6e06:s-socialmedia-tw-api:1.0.0:raml:zip:s-socialmedia-tw-api.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
+	<global-property doc:name="Global Property" doc:id="c48be073-442b-4052-92b2-c65f74529c34" name="env" value="local" />
+	<configuration-properties doc:name="Configuration properties" doc:id="2c4c6750-c0b9-4c50-a9a7-9169a21eea16" file="properties/${env}.yaml" />
+	<http:request-config name="HTTP_API_Twitter_configuration" doc:name="HTTP Request configuration" doc:id="68f06f49-7b50-45d3-9038-d8a4a412cfad" basePath="/2" >
+		<http:request-connection protocol="HTTPS" host="api.twitter.com">
+		</http:request-connection>
+	</http:request-config>
+	
+</mule>
