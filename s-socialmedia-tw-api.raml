@@ -8,19 +8,21 @@ protocols:
   - HTTP
 
 types:
-  SocialMediaPost:
+   SocialMediaPost:
     type: object
     properties:
-        postCode: string
-        title: string
-        message: string
-        toSocialMedia:
-          type: string
-          enum: [TW]
-      
+      postCode: string
+      title: string
+      message: string
+      author: string
+      timestamp: string
+      toSocialMedia: 
+        type: string
+        enum: [TW]
+      translation: boolean
 
 
-/SocialMediaPost:
+/socialmediapost:
   post:
     displayName: Twitter Post
     description: Creates a Twitter Post
