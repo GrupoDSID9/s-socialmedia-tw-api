@@ -55,9 +55,21 @@
 		<dependency>
 			<groupId>6bfdfbd6-1d2e-4ffc-96e4-3a6ab65c6e06</groupId>
 			<artifactId>s-socialmedia-tw-api</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.2</version>
 			<classifier>raml</classifier>
 			<type>zip</type>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.connectors</groupId>
+			<artifactId>mule-email-connector</artifactId>
+			<version>1.7.2</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.modules</groupId>
+			<artifactId>mule-secure-configuration-property-module</artifactId>
+			<version>1.2.5</version>
+			<classifier>mule-plugin</classifier>
 		</dependency>
 	</dependencies>
 

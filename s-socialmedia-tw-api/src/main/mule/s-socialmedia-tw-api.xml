@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd ">
-    <flow name="s-socialmedia-tw-api-main" doc:id="439b8384-d91b-4e22-8b11-b04222168c57">
+<mule xmlns:tls="http://www.mulesoft.org/schema/mule/tls" xmlns:email="http://www.mulesoft.org/schema/mule/email" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd 
+http://www.mulesoft.org/schema/mule/email http://www.mulesoft.org/schema/mule/email/current/mule-email.xsd
+http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd">
+    <email:smtp-config name="Email_SMTP" doc:name="Email SMTP" doc:id="01f90256-58cf-46f7-a74f-d7be0ae0aecd" >
+		<email:smtps-connection host="smtp.gmail.com" user="hack9Catedra@gmail.com" password="lffw oddo sljs qwho" >
+			<tls:context >
+				<tls:trust-store insecure="true" />
+			</tls:context>
+		</email:smtps-connection>
+	</email:smtp-config>
+	<flow name="s-socialmedia-tw-api-main" doc:id="439b8384-d91b-4e22-8b11-b04222168c57">
         <http:listener config-ref="s-socialmedia-tw-api-httpListenerConfig" path="/api/*">
             <http:response statusCode="#[vars.httpStatus default 200]">
                 <http:headers>#[vars.outboundHeaders default {}]</http:headers>
@@ -24,6 +33,7 @@ output application/json
                         <ee:set-variable variableName="httpStatus">400</ee:set-variable>
                     </ee:variables>
                 </ee:transform>
+				<logger level="INFO" doc:name="Logger" doc:id="f783b128-9b73-453b-a53c-75e078a54e95" />
             </on-error-propagate>
             <on-error-propagate type="APIKIT:NOT_FOUND">
                 <ee:transform doc:name="Transform Message">
@@ -37,6 +47,7 @@ output application/json
                         <ee:set-variable variableName="httpStatus">404</ee:set-variable>
                     </ee:variables>
                 </ee:transform>
+				<logger level="INFO" doc:name="Logger" doc:id="49982804-ba03-47ed-8318-989a33a9ef59" />
             </on-error-propagate>
             <on-error-propagate type="APIKIT:METHOD_NOT_ALLOWED">
                 <ee:transform doc:name="Transform Message">
@@ -50,6 +61,7 @@ output application/json
                         <ee:set-variable variableName="httpStatus">405</ee:set-variable>
                     </ee:variables>
                 </ee:transform>
+				<logger level="INFO" doc:name="Logger" doc:id="e522b5b4-228f-45da-83d9-8a9396cf8ae1" />
             </on-error-propagate>
             <on-error-propagate type="APIKIT:NOT_ACCEPTABLE">
                 <ee:transform doc:name="Transform Message">
@@ -63,6 +75,7 @@ output application/json
                         <ee:set-variable variableName="httpStatus">406</ee:set-variable>
                     </ee:variables>
                 </ee:transform>
+				<logger level="INFO" doc:name="Logger" doc:id="d51a8cf0-9dcf-4e26-a319-d11a58eaee96" />
             </on-error-propagate>
             <on-error-propagate type="APIKIT:UNSUPPORTED_MEDIA_TYPE">
                 <ee:transform doc:name="Transform Message">
@@ -76,6 +89,7 @@ output application/json
                         <ee:set-variable variableName="httpStatus">415</ee:set-variable>
                     </ee:variables>
                 </ee:transform>
+				<logger level="INFO" doc:name="Logger" doc:id="21392d7e-8046-4005-a36c-6fd3ea1921fb" />
             </on-error-propagate>
             <on-error-propagate type="APIKIT:NOT_IMPLEMENTED">
                 <ee:transform doc:name="Transform Message">
@@ -89,6 +103,7 @@ output application/json
                         <ee:set-variable variableName="httpStatus">501</ee:set-variable>
                     </ee:variables>
                 </ee:transform>
+				<logger level="INFO" doc:name="Logger" doc:id="8637abae-73c9-4a1f-9513-a6953497ac75" />
             </on-error-propagate>
         </error-handler>
     </flow>
@@ -119,7 +134,32 @@ output application/json
             </on-error-propagate>
         </error-handler>
     </flow>
-    <flow name="post:\SocialMediaPost:application\json:s-socialmedia-tw-api-config" doc:id="767e8fce-3c98-4298-be69-a4571d445ddb">
-        <flow-ref doc:name="s-socialmedia-tw-api-config_subFlow" doc:id="8009f671-7f7c-42bb-a5c0-f9198b81ed8e" name="post:\SocialMediaPost:application\json:s-socialmedia-tw-api-config_subFlow" />
+    <flow name="post:\socialmediapost:application\json:s-socialmedia-tw-api-config">
+		<set-variable value="#[payload]" doc:name="Set Payload" doc:id="03b79712-6d51-41bb-9b61-7979d0182113" variableName="setPayload"/>
+		<flow-ref doc:name="s-socialmedia-tw-api-config_subFlow" doc:id="8009f671-7f7c-42bb-a5c0-f9198b81ed8e" name="post:\SocialMediaPost:application\json:s-socialmedia-tw-api-config_subFlow" />
+		<error-handler >
+			<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="346ef14e-7e75-46c7-9f64-c8144ee0925e" when="#[error.errorMessage.attributes.statusCode != 201]">
+				<logger level="INFO" doc:name="Logger" doc:id="be6a8882-1cf4-4b31-a7e2-288932e38e92" message="Error no publicado" />
+				<ee:transform doc:name="Transform Message" doc:id="3a6febb9-e7b6-4e93-be33-e8a0468d7b69" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	statusCode: error.errorMessage.attributes.statusCode,
+	errorType: error.errorMessage.attributes.reasonPhrase,
+	payload: vars.setPayload
+	
+}]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
+				<email:send doc:name="Send" doc:id="edaf1871-d1e2-43ed-a172-4e9e7dd07cf9" config-ref="Email_SMTP" fromAddress="hackathonDISID9@gmail.com" subject="Error en la publicación de Twitter">
+					<email:to-addresses >
+						<email:to-address value="hack9catedra@gmail.com" />
+					</email:to-addresses>
+					<email:body contentType="text/plain" />
+				</email:send>
+			</on-error-propagate>
+		</error-handler>
     </flow>
 </mule>

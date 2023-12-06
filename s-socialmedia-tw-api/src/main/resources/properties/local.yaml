@@ -1,6 +1,6 @@
 api:
   name: "s-socialMedia-tw-api"
-  port: "8085"
+  port: "8083"
   
 twitter:
   api_key: "U0L6SzWgd0Ju6kEXHVRTZN1kQ"
