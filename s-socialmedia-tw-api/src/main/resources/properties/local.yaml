@@ -3,8 +3,10 @@ api:
   port: "8083"
   
 twitter:
-  api_key: "U0L6SzWgd0Ju6kEXHVRTZN1kQ"
-  api_key_secret: "VhKsKXdG3vSrShuARrHFpgSqOckCFblKi7UQJhwlU7grFVn161"
-  access_token: "1730995269964070912-UC8UXdHbSVNWyWuBPzkJxatocy8TaD"
-  access_token_secret: "tx1RkDwMTy7tT3wvOc4QU7EZR28yeYKvx9MuryiF7FGYA"
+  api_key: "![hnQ11eRZZdUytw2D45uMBrlaCghbzCL3RgxzgmN9ac8=]"
+  api_key_secret: "![1AOrAy6rqpDMBSrWsSM2NnLV69FnVzabRYP8PTQPOPW615GBoqE/bGXOuJc2NFbdu/6zBxViw9s=]"
+  access_token: "![L/V9BvkIkQRHuCoHOHXToKxX9EewGaCGPMBjXABbu3o5qeRYobrtnl+Ircmvq3CqV9K8KllwcEg=]"
+  access_token_secret: "![IoXVk2P09SM3FkdLSj5kd0KVRsBjAQRbW8Pe4y/GSqz60kpBChqW8RKdQTB3tA0o]"
   
+  
+ 
