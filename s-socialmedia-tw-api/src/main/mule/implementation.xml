@@ -23,7 +23,7 @@ output application/json
 			<http:headers ><![CDATA[#[output application/java
 ---
 {
-	Authorization : 'OAuth oauth_consumer_key=' ++ p('secure::twitter.api_key') ++ ',oauth_token='++ p('secure::twitter.access_token') ++ ',oauth_signature_method="HMAC-SHA1",oauth_timestamp="1701885210",oauth_nonce="fbi6NGE24uc",oauth_version="1.0",oauth_signature="%2BisJ5HzSCWUI8DWjgrnp5OhguN8%3D"'
+	Authorization : 'OAuth oauth_consumer_key=' ++ p('secure::twitter.api_key') ++ ',oauth_token='++ p('secure::twitter.access_token') ++ ',oauth_signature_method="HMAC-SHA1",oauth_timestamp="1702035354",oauth_nonce="y9GusipEmHM",oauth_version="1.0",oauth_signature=""vpI%2BO1cxzbzgUF%2BilJqprDDSWLA%3D"'
 }]]]></http:headers>
 		</http:request>
 		<ee:transform doc:name="Response" doc:id="5e949d7b-265c-469d-b087-6cf6d399bb4c" >
